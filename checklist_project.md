@@ -35,12 +35,12 @@
 - [X] Criar entidades:
   - [X] Usuário (id, nome, e-mail, senha, dados adicionais).
 - [X] Criar repositórios e serviços.
-- [] Implementar **endpoints REST**:
+- [X] Implementar **endpoints REST**:
   - [X] `POST /auth/login` – autenticação.
-  - [X] `POST /auth/register` – cadastro.
-  - [X] `GET /auth/user` – buscar usuário.
+  - [X] `POST /user/register` – cadastro.
+  - [X] `GET /user/me` – buscar usuário.
   - [] `POST /auth/recover` – envio de e-mail recuperação (opcional).
-- [] Configurar **segurança** (criptografia de senhas com BCrypt).
+- [X] Configurar **segurança** (criptografia de senhas com BCrypt).
 - [] Testes básicos dos endpoints.
 
 ---

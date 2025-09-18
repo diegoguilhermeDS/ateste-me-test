@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+/* #9300FF */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #222;
+}
+
+a {
+    color: #9300FF;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover,
+a:focus {
+    color: #6d00b3;
+    text-decoration: underline;
+}

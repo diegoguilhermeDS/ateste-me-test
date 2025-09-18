@@ -31,16 +31,15 @@
 
 ## ⚙️ Backend (Java Quarkus)
 - [X] Criar projeto base Quarkus.
-- [] Configurar conexão com banco de dados (PostgreSQL ou H2 para testes).
-- [] Criar entidades:
-  - [] Usuário (id, nome, e-mail, senha, dados adicionais).
-- [] Criar repositórios e serviços.
+- [X] Configurar conexão com banco de dados (PostgreSQL ou H2 para testes).
+- [X] Criar entidades:
+  - [X] Usuário (id, nome, e-mail, senha, dados adicionais).
+- [X] Criar repositórios e serviços.
 - [] Implementar **endpoints REST**:
-  - [] `POST /auth/login` – autenticação.
-  - [] `POST /auth/register` – cadastro.
-  - [] `GET /auth/user` – cadastro.
+  - [X] `POST /auth/login` – autenticação.
+  - [X] `POST /auth/register` – cadastro.
+  - [X] `GET /auth/user` – buscar usuário.
   - [] `POST /auth/recover` – envio de e-mail recuperação (opcional).
-  - [] `GET /cep/{cep}` – busca de CEP (ou consumo direto da API ViaCEP no frontend).
 - [] Configurar **segurança** (criptografia de senhas com BCrypt).
 - [] Testes básicos dos endpoints.
 

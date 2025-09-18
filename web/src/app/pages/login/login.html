@@ -1,21 +1,24 @@
-<div class="register-page">
+<div class="login-page">
+  <!-- Componente de background se repete em cadastro -->
   <div class="bg-image">
-    <img src="/bg.png" alt="register" />
+    <img src="/bg.png" alt="Login" />
   </div>
+  <!-- Content, login-container, login-form e login-form-content se repetem podendo ser apenas um único componente -->
   <div class="content">
-    <div class="register-container">
-      <div class="register-form">
-        <div class="register-form-content">
-          <h2>Cadastrar</h2>
-          <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <div class="login-container">
+      <div class="login-form">
+        <div class="login-form-content">
+          <h2>Entrar</h2>
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
             <div class="form-group">
               <label for="email">E-mail</label>
               <input type="email" id="email" name="email" formControlName="email" required />
-              @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid) {
+              <!-- Verificar possibilidade de deixar os erros dinamicos -->
+              @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
               <div>
-                @if (registerForm.get('email')?.errors?.['email']) {
+                @if (loginForm.get('email')?.errors?.['email']) {
                 <small>Digite um e-mail válido.</small>
-                } @else if (registerForm.get('email')?.errors?.['required']) {
+                } @else if (loginForm.get('email')?.errors?.['required']) {
                 <small>O e-mail é obrigatório.</small>
                 }
               </div>
@@ -30,14 +33,14 @@
                 formControlName="password"
                 required
               />
-              @if (registerForm.get('password')?.touched && registerForm.get('password')?.invalid) {
+              @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid) {
   
               <div>
-                @if (registerForm.get('password')?.errors?.['required']) {
+                @if (loginForm.get('password')?.errors?.['required']) {
                 <small>A senha é obrigatória.</small>
-                } @else if (registerForm.get('password')?.errors?.['minlength']) {
+                } @else if (loginForm.get('password')?.errors?.['minlength']) {
                 <small>A senha deve ter pelo menos 8 caracteres.</small>
-                } @else if (registerForm.get('password')?.errors?.['pattern']) {
+                } @else if (loginForm.get('password')?.errors?.['pattern']) {
                 <small>A senha deve conter letra maiúscula, minúscula e número. </small>
                 }
               </div>
@@ -53,7 +56,8 @@
           </div>
         </div>
       </div>
-      <div class="register-info">
+      <!-- talvez as infors possam ser dinamicas e virar um componente shared -->
+      <div class="login-info">
         <img src="/logo.png" alt="logo" />
         <h3>Desenvolva suas competências digitais agora!</h3>
         <p>

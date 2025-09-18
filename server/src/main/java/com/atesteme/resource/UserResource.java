@@ -1,12 +1,11 @@
 package com.atesteme.resource;
 
-
-import java.net.http.HttpHeaders;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 import com.atesteme.dto.UserRequestDTO;
 import com.atesteme.dto.UserResponseDTO;
 import com.atesteme.entity.User;
-import com.atesteme.security.Secured;
 import com.atesteme.service.UserService;
 
 import jakarta.inject.Inject;
@@ -31,6 +30,9 @@ public class UserResource {
 
     @GET
     @Path("/me")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Busca o usuário logado")
+    @APIResponse(responseCode = "200", description = "Usuário encontrado")
     public Response getLoggedUser(@Context jakarta.ws.rs.core.HttpHeaders headers) {
         String token = null;
         java.util.List<String> authHeaders = headers.getRequestHeader("Authorization");
@@ -52,6 +54,9 @@ public class UserResource {
         
     @POST
     @Transactional
+    @Produces(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Cria um novo usuário")
+    @APIResponse(responseCode = "201", description = "Usuário criado com sucesso")
     public Response createUser(@Valid UserRequestDTO dto) {
         return userService.createUser(dto);
     }

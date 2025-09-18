@@ -5,7 +5,7 @@
 - [X] Configurar ambiente do **Java Quarkus** (backend).
 - [X] Configurar ambiente do **Angular** (frontend).
 - [X] Definir estrutura de pastas (frontend/backend).
-- [] Criar `README.md` inicial com objetivo e instruções básicas.
+- [X] Criar `README.md` inicial com objetivo e instruções básicas.
 
 ---
 

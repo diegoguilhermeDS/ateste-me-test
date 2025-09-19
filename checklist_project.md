@@ -41,7 +41,7 @@
   - [X] `GET /user/me` – buscar usuário.
   - [] `POST /auth/recover` – envio de e-mail recuperação (opcional).
 - [X] Configurar **segurança** (criptografia de senhas com BCrypt).
-- [] Testes básicos dos endpoints.
+- [X] Testes básicos dos endpoints.
 
 ---
 
@@ -62,14 +62,14 @@
   - [X] Como rodar backend.
   - [X] Como rodar frontend.
   - [X] Dependências necessárias.
-  - [] Passos para testar a aplicação.
+  - [X] Passos para testar a aplicação.
 
 ---
 
 ## ✅ Critérios de Atenção
-- [] Funcionalidade completa conforme requisitos.
-- [] Boas práticas de código (organização e clareza).
-- [] Integração bem feita (Angular ↔ Quarkus).
-- [] Usabilidade (UX simples e intuitiva).
-- [] Segurança aplicada (senhas criptografadas).
-- [] Entrega dentro do prazo.
+- [X] Funcionalidade completa conforme requisitos.
+- [X] Boas práticas de código (organização e clareza).
+- [X] Integração bem feita (Angular ↔ Quarkus).
+- [X] Usabilidade (UX simples e intuitiva).
+- [X] Segurança aplicada (senhas criptografadas).
+- [X] Entrega dentro do prazo.

@@ -70,12 +70,16 @@ $ npm install
 $ ng serve
 
 # Inicie o back-end:
-cd backend
+cd server
 docker-compose up #Certifique-se de ter o Docker instalado.
 ./mvn quarkus:dev
 
 # A aplicação será aberta na porta:4200 - acesse http://localhost:4200
 
+# Rodando os testes
+cd server
+docker-compose up
+./mvn test
 ```
 
 ## 🛠 Tecnologias

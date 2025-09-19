@@ -1,7 +1,7 @@
 
 <img alt="logo-ateste-me" src="web/public/logo.png">
 
-This project was developed by Ateste Me to test my ability in front and back.
+---
 
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/diegoguilhermeDS/ateste-me-test?color=%2304D361">

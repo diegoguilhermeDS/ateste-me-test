@@ -10,22 +10,22 @@
 ---
 
 ## 🎨 Frontend (Angular)
-- [] Criar **módulo de autenticação** (login, cadastro, recuperação).
-- [] Tela de **Login**:
+- [X] Criar **módulo de autenticação** (login, cadastro, recuperação).
+- [X] Tela de **Login**:
   - [X] Campos: e-mail + senha.
   - [X] Validações básicas.
-  - [] Chamada à API de autenticação.
-- [] Tela de **Cadastro**:
+  - [X] Chamada à API de autenticação.
+- [X] Tela de **Cadastro**:
   - [] Campo com **Bottom Sheet** (informações adicionais).
   - [] Campo **livre** (sem restrições).
-  - [] Campo **CEP** com autocomplete de endereço (API ViaCEP).
-  - [] Campo de **senha** com requisitos de segurança (mín. caracteres, maiúscula, minúscula, número, etc.).
-  - [] Botão de confirmar cadastro.
+  - [X] Campo **CEP** com autocomplete de endereço (API ViaCEP).
+  - [X] Campo de **senha** com requisitos de segurança (mín. caracteres, maiúscula, minúscula, número, etc.).
+  - [X] Botão de confirmar cadastro.
 - [X] Tela de **Boas-vindas** (exibir: `"SUCESSO! VOCÊ ESTÁ LOGADO"`).
 - [] Tela de **Recuperação de senha** (opcional):
   - [] Formulário para inserir e-mail.
   - [] Mensagem de confirmação de envio.
-- [] Estilização básica (UI limpa e intuitiva).
+- [X] Estilização básica (UI limpa e intuitiva).
 
 ---
 
@@ -47,8 +47,8 @@
 
 ## 🔗 Integração Frontend + Backend
 - [] Configurar variáveis de ambiente (URL da API).
-- [] Implementar serviços Angular para consumir a API Quarkus.
-- [] Testar fluxo completo:
+- [X] Implementar serviços Angular para consumir a API Quarkus.
+- [X] Testar fluxo completo:
   1. Cadastro → Banco de Dados.
   2. Login → Autenticação.
   3. Redirecionamento para tela de boas-vindas.
@@ -57,7 +57,7 @@
 ---
 
 ## 📦 Entregáveis
-- [] Código hospedado em **repositório público do GitHub**.
+- [X] Código hospedado em **repositório público do GitHub**.
 - [] Arquivo `README.md` com:
   - [] Como rodar backend.
   - [] Como rodar frontend.

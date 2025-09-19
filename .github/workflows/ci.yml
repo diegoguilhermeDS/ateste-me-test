@@ -21,4 +21,4 @@ jobs:
           distribution: 'temurin'
 
       - name: Build & Test Backend (Quarkus)
-        run: ./mvn test
+        run: mvn test

@@ -25,3 +25,8 @@
   max-width: 400px;
   width: 100%;
 }
+@media (max-width: 600px) {
+  .info-container {
+    display: none;
+  }
+}

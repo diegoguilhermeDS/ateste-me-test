@@ -1,0 +1,128 @@
+<div class="register-page">
+  <app-background></app-background>
+
+  <!-- Content, register-container, register-form e register-form-content se repetem podendo ser apenas um único componente -->
+  <app-container-form [reverse]="true">
+    <h2 form-box-title>Cadastrar</h2>
+    <form form-box [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <app-box-inputs>
+        <app-form-input
+          label="Nome"
+          type="text"
+          name="name"
+          [control]="registerForm.get('name')!"
+          placeholder="Digite seu nome"
+          [errorMessages]="{
+            required: 'O nome é obrigatório.',
+            minlength: 'O nome deve ter pelo menos 3 caracteres.'
+          }"
+        />
+        <app-form-input
+          label="E-mail"
+          type="email"
+          name="email"
+          [control]="registerForm.get('email')!"
+          placeholder="Digite seu e-mail"
+          [errorMessages]="{
+            required: 'O e-mail é obrigatório.',
+            email: 'Digite um e-mail válido.'
+          }"
+        />
+      </app-box-inputs>
+
+      <app-box-inputs>
+        <app-form-input
+          label="Senha"
+          type="password"
+          name="password"
+          [control]="registerForm.get('password')!"
+          placeholder="Digite sua senha"
+          [errorMessages]="{
+            required: 'A senha é obrigatória.',
+            minlength: 'A senha deve ter pelo menos 8 caracteres.',
+            pattern: 'A senha deve conter letra maiúscula, minúscula e número.'
+          }"
+        />
+        <app-form-input
+          label="Confirmar senha"
+          type="password"
+          name="confirmPassword"
+          [control]="registerForm.get('confirmPassword')!"
+          placeholder="Digite sua senha novamente"
+          [errorMessages]="{
+            required: 'A confirmação da senha é obrigatória.',
+            mismatch: 'As senhas não coincidem.'
+          }"
+        />
+      </app-box-inputs>
+
+      <app-box-inputs>
+        <app-form-input
+          label="CEP"
+          type="text"
+          name="cep"
+          [control]="registerForm.get('cep')!"
+          placeholder="Digite seu CEP"
+          [errorMessages]="{
+            required: 'O CEP é obrigatório.',
+            pattern: 'Digite um CEP válido (formato: 12345-678 ou 12345678).'
+          }"
+          (blurEvent)="onCepBlur()"
+        />
+        <app-form-input
+          label="Logradouro"
+          type="text"
+          name="logradouro"
+          placeholder="Av. Brasil"
+          [control]="registerForm.get('logradouro')!"
+        />
+      </app-box-inputs>
+
+      <app-box-inputs>
+        <app-form-input
+          label="Bairro"
+          type="text"
+          name="bairro"
+          placeholder="Dois Unidos"
+          [control]="registerForm.get('bairro')!"
+        />
+        <app-form-input
+          label="Cidade"
+          type="text"
+          name="cidade"
+          placeholder="Recife"
+          [control]="registerForm.get('cidade')!"
+        />
+      </app-box-inputs>
+      
+      <app-box-inputs>
+        <app-form-input
+          label="Estado"
+          type="text"
+          name="estado"
+          placeholder="Pernambuco"
+          [control]="registerForm.get('estado')!"
+        />
+        <app-form-input
+          label="Número"
+          type="text"
+          name="numero"
+          placeholder="123"
+          [control]="registerForm.get('numero')!"
+        />
+      </app-box-inputs>
+
+      <app-dynamic-button type="submit" label="Cadastrar" [disabled]="registerForm.invalid" />
+    </form>
+    <p form-box>Já tem uma conta? <a routerLink="/login">Entrar</a></p>
+
+    <app-infor infor>
+      <h3 title>Desenvolva suas competências digitais agora!</h3>
+      <p description>
+        Lorem ipsum dolor sit amet condivtetur adipisicing elit. Accusamus illum ut dolorem voluptas
+        nostrum praesentium quibusdam sequi recusandae non. Illo quis fugit non officia numquam
+        quisquam nisi deserunt corporis hic.
+      </p>
+    </app-infor>
+  </app-container-form>
+</div>

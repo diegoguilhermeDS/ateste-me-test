@@ -1,0 +1,36 @@
+<div class="form-group">
+  <label [for]="name">{{ label }}</label>
+  <input
+    [type]="type"
+    [id]="name"
+    [formControl]="formControl"
+    [placeholder]="placeholder"
+    [name]="name"
+    class="form-control"
+    (blur)="onBlur()"
+  />
+
+  @if (control.touched && control.invalid) {
+  <div class="error-message">
+    @for (errorKey of getErrorKeys(); track errorKey) {
+    <small>
+        {{ errorMessages[errorKey] || 'Campo inválido' }}
+    </small>
+    } @empty {
+    <small>Nenhum erro</small>
+    }
+  </div>
+  }
+  <!-- <div *ngIf="control.touched && control.invalid" class="error-message">
+    <small *ngIf="control.errors?.['required']">
+      {{ label }} é obrigatório.
+    </small>
+    <small *ngIf="control.errors?.['email']">
+      Digite um {{ label.toLowerCase() }} válido.
+    </small>
+    <small *ngIf="control.errors?.['minlength']">
+      O {{ label.toLowerCase() }} deve ter pelo menos 
+      {{ control.errors?.['minlength'].requiredLength }} caracteres.
+    </small>
+  </div> -->
+</div>

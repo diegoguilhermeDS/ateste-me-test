@@ -1,0 +1,48 @@
+<div class="login-page">
+  <app-background></app-background>
+  <app-container-form>
+    <h2 form-box-title>Entrar</h2>
+    <form form-box [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <app-form-input
+        label="E-mail"
+        type="email"
+        name="email"
+        [control]="loginForm.get('email')!"
+        placeholder="Digite seu e-mail"
+        [errorMessages]="{
+          required: 'O e-mail é obrigatório.',
+          email: 'Digite um e-mail válido.'
+        }"
+      />
+
+      <app-form-input
+        label="Senha"
+        type="password"
+        name="password"
+        [control]="loginForm.get('password')!"
+        placeholder="Digite sua senha"
+        [errorMessages]="{
+          required: 'A senha é obrigatória.',
+          minlength: 'A senha deve ter pelo menos 8 caracteres.',
+          pattern: 'A senha deve conter letra maiúscula, minúscula e número.'
+        }"
+      />
+
+      <div class="forgot-password">
+        <a routerLink="/recuperar-senha">Esqueceu a senha?</a>
+      </div>
+
+      <app-dynamic-button type="submit" label="Entrar" [disabled]="loginForm.invalid" />
+    </form>
+    <p form-box>Não tem uma conta? <a routerLink="/register">Cadastre-se</a></p>
+
+    <app-infor infor>
+      <h3 title>Desenvolva suas competências digitais agora!</h3>
+      <p description>
+        Lorem ipsum dolor sit amet condivtetur adipisicing elit. Accusamus illum ut dolorem voluptas
+        nostrum praesentium quibusdam sequi recusandae non. Illo quis fugit non officia numquam
+        quisquam nisi deserunt corporis hic.
+      </p>
+    </app-infor>
+  </app-container-form>
+</div>

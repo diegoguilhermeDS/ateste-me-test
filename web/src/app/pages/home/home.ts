@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { Profile } from '../../components/profile/profile';
+import { DynamicButton } from "../../components/dynamic-button/dynamic-button";
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [Profile, DynamicButton],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

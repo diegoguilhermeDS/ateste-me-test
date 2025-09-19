@@ -1,0 +1,34 @@
+.dynamic-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+  width: 250px;
+
+  &.submit {
+    background: linear-gradient(90deg, #9300FF, #E53935);
+    color: white;
+  }
+
+  &.logout {
+    background: linear-gradient(90deg, #FF004D, #E53935);
+    color: white;
+    width: 80px;
+  }
+
+  &.default {
+    background-color: #2196f3;
+    color: white;
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

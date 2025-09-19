@@ -23,3 +23,8 @@ a:focus {
     color: #6d00b3;
     text-decoration: underline;
 }
+@media (max-width: 600px) {
+  body {
+    height: auto;
+  }
+}

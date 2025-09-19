@@ -47,3 +47,30 @@
   color: #333;
   margin-bottom: 40px;
 }
+@media (max-width: 600px) {
+  .content {
+    height: auto;
+  }
+  ::ng-deep [infor] {
+    display: none;
+  }
+  .container-form {
+    padding: 8px 0;
+  }
+  .container-form-content {
+    width: 90%;
+    height: 95%;
+    min-height: 100vh;
+    gap: 16px;
+    padding: 12px 0;
+  }
+  ::ng-deep [form-box-title] {
+    margin-bottom: 12px;
+  }
+  ::ng-deep form[form-box] {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

@@ -12,3 +12,8 @@ img {
   border-width: 1px;
   border-style: solid;
 }
+@media (max-width: 600px) {
+  .user-profile {
+    display: none;
+  }
+}

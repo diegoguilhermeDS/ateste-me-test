@@ -58,10 +58,10 @@
 
 ## 📦 Entregáveis
 - [X] Código hospedado em **repositório público do GitHub**.
-- [] Arquivo `README.md` com:
-  - [] Como rodar backend.
-  - [] Como rodar frontend.
-  - [] Dependências necessárias.
+- [X] Arquivo `README.md` com:
+  - [X] Como rodar backend.
+  - [X] Como rodar frontend.
+  - [X] Dependências necessárias.
   - [] Passos para testar a aplicação.
 
 ---

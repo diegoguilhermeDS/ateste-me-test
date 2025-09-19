@@ -1,0 +1,34 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  max-width: 250px;
+  width: 250px;
+
+  label {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .form-control {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s;
+
+    &:focus {
+      border-color: #9300FF;
+      box-shadow: 0 0 0 2px rgba(147, 0, 255, 0.2);
+    }
+  }
+
+  .error-message {
+    margin-top: 0.3rem;
+
+    small {
+      color: #e74c3c;
+      font-size: 0.85rem;
+    }
+  }
+}

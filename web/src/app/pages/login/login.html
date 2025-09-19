@@ -1,71 +1,48 @@
 <div class="login-page">
-  <!-- Componente de background se repete em cadastro -->
-  <div class="bg-image">
-    <img src="/bg.png" alt="Login" />
-  </div>
-  <!-- Content, login-container, login-form e login-form-content se repetem podendo ser apenas um único componente -->
-  <div class="content">
-    <div class="login-container">
-      <div class="login-form">
-        <div class="login-form-content">
-          <h2>Entrar</h2>
-          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-            <div class="form-group">
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" formControlName="email" required />
-              <!-- Verificar possibilidade de deixar os erros dinamicos -->
-              @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
-              <div>
-                @if (loginForm.get('email')?.errors?.['email']) {
-                <small>Digite um e-mail válido.</small>
-                } @else if (loginForm.get('email')?.errors?.['required']) {
-                <small>O e-mail é obrigatório.</small>
-                }
-              </div>
-              }
-            </div>
-            <div class="form-group">
-              <label for="password">Senha</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                formControlName="password"
-                required
-              />
-              @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid) {
-  
-              <div>
-                @if (loginForm.get('password')?.errors?.['required']) {
-                <small>A senha é obrigatória.</small>
-                } @else if (loginForm.get('password')?.errors?.['minlength']) {
-                <small>A senha deve ter pelo menos 8 caracteres.</small>
-                } @else if (loginForm.get('password')?.errors?.['pattern']) {
-                <small>A senha deve conter letra maiúscula, minúscula e número. </small>
-                }
-              </div>
-              }
-            </div>
-            <div class="forgot-password">
-              <a routerLink="/recuperar-senha">Esqueceu a senha?</a>
-            </div>
-            <button type="submit">Entrar</button>
-          </form>
-          <div class="register-link">
-            <p>Não tem uma conta? <a routerLink="/register" >Cadastre-se</a></p>
-          </div>
-        </div>
+  <app-background></app-background>
+  <app-container-form>
+    <h2 form-box-title>Entrar</h2>
+    <form form-box [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <app-form-input
+        label="E-mail"
+        type="email"
+        name="email"
+        [control]="loginForm.get('email')!"
+        placeholder="Digite seu e-mail"
+        [errorMessages]="{
+          required: 'O e-mail é obrigatório.',
+          email: 'Digite um e-mail válido.'
+        }"
+      />
+
+      <app-form-input
+        label="Senha"
+        type="password"
+        name="password"
+        [control]="loginForm.get('password')!"
+        placeholder="Digite sua senha"
+        [errorMessages]="{
+          required: 'A senha é obrigatória.',
+          minlength: 'A senha deve ter pelo menos 8 caracteres.',
+          pattern: 'A senha deve conter letra maiúscula, minúscula e número.'
+        }"
+      />
+
+      <div class="forgot-password">
+        <a routerLink="/recuperar-senha">Esqueceu a senha?</a>
       </div>
-      <!-- talvez as infors possam ser dinamicas e virar um componente shared -->
-      <div class="login-info">
-        <img src="/logo.png" alt="logo" />
-        <h3>Desenvolva suas competências digitais agora!</h3>
-        <p>
-          Lorem ipsum dolor sit amet condivtetur adipisicing elit. Accusamus illum ut dolorem voluptas
-          nostrum praesentium quibusdam sequi recusandae non. Illo quis fugit non officia numquam
-          quisquam nisi deserunt corporis hic.
-        </p>
-      </div>
-    </div>
-  </div>
+
+      <app-dynamic-button type="submit" label="Entrar" [disabled]="loginForm.invalid" />
+    </form>
+    <p form-box>Não tem uma conta? <a routerLink="/register">Cadastre-se</a></p>
+
+    <app-infor infor>
+      <h3 title>Desenvolva suas competências digitais agora!</h3>
+      <p description>
+        Lorem ipsum dolor sit amet condivtetur adipisicing elit. Accusamus illum ut dolorem voluptas
+        nostrum praesentium quibusdam sequi recusandae non. Illo quis fugit non officia numquam
+        quisquam nisi deserunt corporis hic.
+      </p>
+    </app-infor>
+  </app-container-form>
 </div>

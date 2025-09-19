@@ -1,0 +1,11 @@
+<div class="content">
+  <div class="container" [class.reverse]="reverse">
+    <div class="container-form">
+      <div class="container-form-content">
+        <ng-content select="[form-box-title]"></ng-content>
+        <ng-content select="[form-box]"></ng-content>
+      </div>
+    </div>
+    <ng-content select="[infor]"></ng-content>
+  </div>
+</div>

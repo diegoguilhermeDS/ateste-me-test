@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Background } from "../../components/background/background";
+import { ContainerForm } from "../../components/container-form/container-form";
+import { Infor } from "../../components/infor/infor";
+import { DynamicButton } from "../../components/dynamic-button/dynamic-button";
+import { FormInput } from "../../components/form-input/form-input";
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, Background, ContainerForm, Infor, DynamicButton, FormInput],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -18,8 +23,8 @@ export class Login {
         '',
         [
           Validators.required,
-          // Validators.minLength(8),
-          // Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/),
+          Validators.minLength(8),
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/),
         ],
       ],
     });

@@ -1,70 +1,128 @@
 <div class="register-page">
-  <!-- Componente de background se repete em login -->
-  <div class="bg-image">
-    <img src="/bg.png" alt="register" />
-  </div>
+  <app-background></app-background>
+
   <!-- Content, register-container, register-form e register-form-content se repetem podendo ser apenas um único componente -->
-  <div class="content">
-    <div class="register-container">
-      <div class="register-form">
-        <div class="register-form-content">
-          <h2>Cadastrar</h2>
-          <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-            <div class="form-group">
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" formControlName="email" required />
-              @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid) {
-              <div>
-                @if (registerForm.get('email')?.errors?.['email']) {
-                <small>Digite um e-mail válido.</small>
-                } @else if (registerForm.get('email')?.errors?.['required']) {
-                <small>O e-mail é obrigatório.</small>
-                }
-              </div>
-              }
-            </div>
-            <div class="form-group">
-              <label for="password">Senha</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                formControlName="password"
-                required
-              />
-              @if (registerForm.get('password')?.touched && registerForm.get('password')?.invalid) {
-  
-              <div>
-                @if (registerForm.get('password')?.errors?.['required']) {
-                <small>A senha é obrigatória.</small>
-                } @else if (registerForm.get('password')?.errors?.['minlength']) {
-                <small>A senha deve ter pelo menos 8 caracteres.</small>
-                } @else if (registerForm.get('password')?.errors?.['pattern']) {
-                <small>A senha deve conter letra maiúscula, minúscula e número. </small>
-                }
-              </div>
-              }
-            </div>
-            <div class="forgot-password">
-              <a routerLink="/recuperar-senha">Esqueceu a senha?</a>
-            </div>
-            <button type="submit">Entrar</button>
-          </form>
-          <div class="register-link">
-            <p>Não tem uma conta? <a routerLink="/register" >Cadastre-se</a></p>
-          </div>
-        </div>
-      </div>
-      <!-- talvez as infors possam ser dinamicas e virar um componente shared -->
-      <div class="register-info">
-        <img src="/logo.png" alt="logo" />
-        <h3>Desenvolva suas competências digitais agora!</h3>
-        <p>
-          Lorem ipsum dolor sit amet condivtetur adipisicing elit. Accusamus illum ut dolorem voluptas
-          nostrum praesentium quibusdam sequi recusandae non. Illo quis fugit non officia numquam
-          quisquam nisi deserunt corporis hic.
-        </p>
-      </div>
-    </div>
-  </div>
+  <app-container-form [reverse]="true">
+    <h2 form-box-title>Cadastrar</h2>
+    <form form-box [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <app-box-inputs>
+        <app-form-input
+          label="Nome"
+          type="text"
+          name="name"
+          [control]="registerForm.get('name')!"
+          placeholder="Digite seu nome"
+          [errorMessages]="{
+            required: 'O nome é obrigatório.',
+            minlength: 'O nome deve ter pelo menos 3 caracteres.'
+          }"
+        />
+        <app-form-input
+          label="E-mail"
+          type="email"
+          name="email"
+          [control]="registerForm.get('email')!"
+          placeholder="Digite seu e-mail"
+          [errorMessages]="{
+            required: 'O e-mail é obrigatório.',
+            email: 'Digite um e-mail válido.'
+          }"
+        />
+      </app-box-inputs>
+
+      <app-box-inputs>
+        <app-form-input
+          label="Senha"
+          type="password"
+          name="password"
+          [control]="registerForm.get('password')!"
+          placeholder="Digite sua senha"
+          [errorMessages]="{
+            required: 'A senha é obrigatória.',
+            minlength: 'A senha deve ter pelo menos 8 caracteres.',
+            pattern: 'A senha deve conter letra maiúscula, minúscula e número.'
+          }"
+        />
+        <app-form-input
+          label="Confirmar senha"
+          type="password"
+          name="confirmPassword"
+          [control]="registerForm.get('confirmPassword')!"
+          placeholder="Digite sua senha novamente"
+          [errorMessages]="{
+            required: 'A confirmação da senha é obrigatória.',
+            mismatch: 'As senhas não coincidem.'
+          }"
+        />
+      </app-box-inputs>
+
+      <app-box-inputs>
+        <app-form-input
+          label="CEP"
+          type="text"
+          name="cep"
+          [control]="registerForm.get('cep')!"
+          placeholder="Digite seu CEP"
+          [errorMessages]="{
+            required: 'O CEP é obrigatório.',
+            pattern: 'Digite um CEP válido (formato: 12345-678 ou 12345678).'
+          }"
+          (blurEvent)="onCepBlur()"
+        />
+        <app-form-input
+          label="Logradouro"
+          type="text"
+          name="logradouro"
+          placeholder="Av. Brasil"
+          [control]="registerForm.get('logradouro')!"
+        />
+      </app-box-inputs>
+
+      <app-box-inputs>
+        <app-form-input
+          label="Bairro"
+          type="text"
+          name="bairro"
+          placeholder="Dois Unidos"
+          [control]="registerForm.get('bairro')!"
+        />
+        <app-form-input
+          label="Cidade"
+          type="text"
+          name="cidade"
+          placeholder="Recife"
+          [control]="registerForm.get('cidade')!"
+        />
+      </app-box-inputs>
+      
+      <app-box-inputs>
+        <app-form-input
+          label="Estado"
+          type="text"
+          name="estado"
+          placeholder="Pernambuco"
+          [control]="registerForm.get('estado')!"
+        />
+        <app-form-input
+          label="Número"
+          type="text"
+          name="numero"
+          placeholder="123"
+          [control]="registerForm.get('numero')!"
+        />
+      </app-box-inputs>
+
+      <app-dynamic-button type="submit" label="Cadastrar" [disabled]="registerForm.invalid" />
+    </form>
+    <p form-box>Já tem uma conta? <a routerLink="/login">Entrar</a></p>
+
+    <app-infor infor>
+      <h3 title>Desenvolva suas competências digitais agora!</h3>
+      <p description>
+        Lorem ipsum dolor sit amet condivtetur adipisicing elit. Accusamus illum ut dolorem voluptas
+        nostrum praesentium quibusdam sequi recusandae non. Illo quis fugit non officia numquam
+        quisquam nisi deserunt corporis hic.
+      </p>
+    </app-infor>
+  </app-container-form>
 </div>

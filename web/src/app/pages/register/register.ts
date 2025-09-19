@@ -1,25 +1,41 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { Background } from "../../components/background/background";
-import { ContainerForm } from "../../components/container-form/container-form";
-import { Infor } from "../../components/infor/infor";
-import { DynamicButton } from "../../components/dynamic-button/dynamic-button";
-import { FormInput } from "../../components/form-input/form-input";
+import { Background } from '../../components/background/background';
+import { ContainerForm } from '../../components/container-form/container-form';
+import { Infor } from '../../components/infor/infor';
+import { DynamicButton } from '../../components/dynamic-button/dynamic-button';
+import { FormInput } from '../../components/form-input/form-input';
 import { matchValidator } from '../../validators/match.validator';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { BoxInputs } from "../../components/box-inputs/box-inputs";
+import { BoxInputs } from '../../components/box-inputs/box-inputs';
+import { RegisterData, UserService } from '../../services/User.service';
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, RouterLink, Background, ContainerForm, Infor, DynamicButton, FormInput, HttpClientModule, BoxInputs],
+  imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    Background,
+    ContainerForm,
+    Infor,
+    DynamicButton,
+    FormInput,
+    HttpClientModule,
+    BoxInputs,
+  ],
   templateUrl: './register.html',
-  styleUrl: './register.css'
+  styleUrl: './register.css',
 })
 export class Register {
   registerForm: FormGroup;
 
-  constructor(private readonly http: HttpClient, private readonly fb: FormBuilder, private readonly router: Router) {
+  constructor(
+    private readonly http: HttpClient,
+    private readonly fb: FormBuilder,
+    private readonly router: Router,
+    private readonly userService: UserService
+  ) {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
@@ -48,12 +64,28 @@ export class Register {
 
   onRegister() {
     if (this.registerForm.valid) {
-      console.log('Dados válidos', this.registerForm.value);
-      alert('SUCESSO! VOCÊ ESTÁ CADASTRADO');
-      this.router.navigate(['/login']);
-      // aqui você faria a chamada ao back-end (Quarkus) para autenticação
+      const data: RegisterData = {
+        name: this.registerForm.value.name,
+        password: this.registerForm.value.password,
+        email: this.registerForm.value.email,
+        cep: this.registerForm.value.cep,
+      };
+
+      this.userService.register(data).subscribe({
+        next: (response) => {
+          this.registerForm.reset();
+          alert('SUCESSO! VOCÊ ESTÁ CADASTRADO');
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 500); 
+        },
+        error: (err) => {
+          alert('Ocorreu um erro ao realizar o cadastro.');
+        },
+      });
+      
     } else {
-      this.registerForm.markAllAsTouched(); // força exibir erros
+      this.registerForm.markAllAsTouched();
     }
   }
 
@@ -67,7 +99,7 @@ export class Register {
               logradouro: dados.logradouro,
               bairro: dados.bairro,
               cidade: dados.localidade,
-              estado: dados.uf
+              estado: dados.uf,
             });
           } else {
             alert('CEP não encontrado');

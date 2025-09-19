@@ -6,16 +6,15 @@
 
     <!-- Profile and Logout -->
     <div class="profile-actions">
-      <app-profile></app-profile>
+      <app-profile [name]="name"></app-profile>
 
-      <!-- Componente especificado por propriedas qual o tipo do butão -->
       <app-dynamic-button type="logout" label="Sair"/>
     </div>
   </header>
 
   <div class="home-container">
     <div class="text-welcome">
-      <h1>Bem-vindo, Usuário!</h1>
+      <h1>Bem-vindo, {{name}}!</h1>
       <p>Estamos felizes em tê-lo aqui.</p>
     </div>
     <div class="img-welcome">
